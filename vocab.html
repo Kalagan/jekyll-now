@@ -44,21 +44,21 @@
 
     $(document).ready(function() {
 
-      var vocab2 = _.map(vocab, function(v){
+      var vocab2 = _.map(vocab, function(v, i){
 
         var kana = v.Kana;
 
         if(v.Romaji)
           kana += ' (' + v.Romaji + ')';
 
-        return [v.lesson, 'lesson ' + v.lesson, kana, v.Kanji, v.English];
+        return [i, 'lesson ' + v.lesson, kana, v.Kanji, v.English];
       });
 
       $('#table-vocab').dataTable( {
           data: vocab2,
           pageLength: 50,
           columns: [
-              { title: "lessonOrd", visible: false },
+              { title: "i", visible: false },
               { title: "lesson", dataSort: 0 },
               { title: "kana" },
               { title: "kanji" },
