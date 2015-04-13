@@ -18,29 +18,25 @@
     <![endif]-->
   </head>
   <body>
+    <br>
+    <br>
  
-    <div class="container">
-    
+    <div class="container">    
       <div class="row">
         <div class="col-md-12">
           <table id="table-vocab" cellpadding="0" cellspacing="0" border="0" class="display"></table>
         </div>
       </div>
       <br>
-
-      <div class="row">
-        <div class="col-md-12">
       thanks <a href="http://www.csus.edu/indiv/s/sheaa/projects/genki/vocab_main.html">http://www.csus.edu/indiv/s/sheaa/projects/genki/vocab_main.html</a>
-        </div>
-      </div>
+      <br>
+      <br>
     </div>
 
  
  
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.3.0/lodash.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
   
@@ -49,7 +45,13 @@
     $(document).ready(function() {
 
       var vocab2 = _.map(vocab, function(v){
-        return [v['lesson'], 'lesson ' + v['lesson'], v['Kana'], v['Kanji'], v['English']];
+
+        var kana = v.Kana;
+
+        if(v.Romaji)
+          kana += ' (' + v.Romaji + ')';
+
+        return [v.lesson, 'lesson ' + v.lesson, kana, v.Kanji, v.English];
       });
 
       $('#table-vocab').dataTable( {
@@ -64,6 +66,7 @@
           ]
       } );   
     });
+
     </script>
 
     <script>
@@ -73,3 +76,8 @@
     
   </body>
 </html>
+
+
+
+
+
